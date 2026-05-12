@@ -5,7 +5,13 @@
 
 ---
 
-## Phase 0: 代码脚手架搭建 ⚡
+## Phase 0: 代码脚手架搭建 ✅ 已完成
+
+> 本地以 `scripts/` 分模块结构替代 `src/`，等价完成。
+
+---
+
+## Phase 0: 代码脚手架搭建 ⚡（原始规划，供参考）
 
 ### 目标
 搭好完整项目骨架，装好依赖，确保「数据放 data/ 就能跑实验」。
@@ -122,7 +128,13 @@ outputs/
 
 ---
 
-## Phase 1: DAIC-WOZ 数据解析管线 🗂️
+## Phase 1: DAIC-WOZ 数据解析管线 ✅ 已完成
+
+> 实际产物：`daicwoz_first_batch.sqlite`（20.2GB）、`reports/inspection/daic_label_master_clean.csv`（189条）、E-DAIC 1fps 抽帧完成。
+
+---
+
+## Phase 1: DAIC-WOZ 数据解析管线 🗂️（原始规划，供参考）
 
 ### 目标
 写代码解析 DAIC-WOZ 原始数据 → 统一的 participant × feature 矩阵，可喂给 sklearn。
@@ -192,7 +204,21 @@ def get_available_participants() -> List[str]: # 可用的 participant 列表
 
 ---
 
-## Phase 2: Baseline 实验 🧪
+## Phase 2: Baseline 实验 ✅ 已完成
+
+> 实际结果（OpenFace 视觉特征，5-fold subject-level CV）：
+>
+> | 场景 | 最佳 config | Acc | AUC | F1 |
+> |------|------------|-----|-----|----|
+> | DAIC 同域 | pose_only | 0.660 | 0.712 | 0.529 |
+> | DAIC → eDAIC 跨域 | pose_only | 0.712 | 0.599 | 0.364 |
+> | eDAIC 同域 | pose_only | 0.614 | 0.624 | 0.414 |
+>
+> 产物：`outputs/m1_baseline_summary/m1_all_scenarios_summary.csv`
+
+---
+
+## Phase 2: Baseline 实验 🧪（原始规划，供参考）
 
 ### 目标
 用 OpenFace AU 聚合特征构建最简单的分类/回归模型。**目标是跑通全流程，不是刷分。**
